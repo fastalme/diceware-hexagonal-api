@@ -30,12 +30,16 @@ public class DicewareService {
 
         var phrase = new StringBuilder ();
         for (var i = 0; i < diceRolls; i++) {
-            Optional<DiceWord> diceWord = this.diceWordRepository.findById (calculateId());
-            phrase.append (diceWord.isPresent () ? diceWord.get ().getWord () : DEFAULT_WORD).append (" ");
+            phrase.append (findRandomWord ()).append (" ");
         }
 
         return phrase.toString ().trim ();
 
+    }
+
+    private String findRandomWord () {
+        Optional<DiceWord> diceWord = this.diceWordRepository.findById (calculateId());
+        return diceWord.isPresent () ? diceWord.get ().getWord () : DEFAULT_WORD;
     }
 
     private String calculateId() {
