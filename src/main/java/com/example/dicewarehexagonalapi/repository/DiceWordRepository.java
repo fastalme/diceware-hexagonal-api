@@ -1,6 +1,6 @@
-package com.example.dicewirehexagonalapi.repository;
+package com.example.dicewarehexagonalapi.repository;
 
-import com.example.dicewirehexagonalapi.entity.DiceWord;
+import com.example.dicewarehexagonalapi.entity.DiceWord;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

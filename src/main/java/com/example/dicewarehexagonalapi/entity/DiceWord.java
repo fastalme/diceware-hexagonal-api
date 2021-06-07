@@ -1,4 +1,4 @@
-package com.example.dicewirehexagonalapi.entity;
+package com.example.dicewarehexagonalapi.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

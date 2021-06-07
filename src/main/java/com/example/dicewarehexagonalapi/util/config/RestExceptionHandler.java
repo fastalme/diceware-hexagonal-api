@@ -1,6 +1,6 @@
-package com.example.dicewirehexagonalapi.util.config;
+package com.example.dicewarehexagonalapi.util.config;
 
-import com.example.dicewirehexagonalapi.util.exception.DicerollsInvalidValue;
+import com.example.dicewarehexagonalapi.util.exception.DicerollsInvalidValue;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

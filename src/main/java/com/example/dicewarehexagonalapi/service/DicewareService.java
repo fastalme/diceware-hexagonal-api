@@ -1,10 +1,10 @@
-package com.example.dicewirehexagonalapi.service;
+package com.example.dicewarehexagonalapi.service;
 
-import com.example.dicewirehexagonalapi.entity.DiceWord;
-import com.example.dicewirehexagonalapi.externalapis.SynonymsResult;
-import com.example.dicewirehexagonalapi.externalapis.WordsAPIClient;
-import com.example.dicewirehexagonalapi.repository.DiceWordRepository;
-import com.example.dicewirehexagonalapi.util.exception.DicerollsInvalidValue;
+import com.example.dicewarehexagonalapi.entity.DiceWord;
+import com.example.dicewarehexagonalapi.externalapis.SynonymsResult;
+import com.example.dicewarehexagonalapi.externalapis.WordsAPIClient;
+import com.example.dicewarehexagonalapi.repository.DiceWordRepository;
+import com.example.dicewarehexagonalapi.util.exception.DicerollsInvalidValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

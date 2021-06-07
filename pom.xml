@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>dicewire-hexagonal-api</artifactId>
+    <artifactId>diceware-hexagonal-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>dicewire-hexagonal-api</name>
+    <name>diceware-hexagonal-api</name>
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>11</java.version>

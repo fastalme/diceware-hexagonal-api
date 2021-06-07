@@ -1,4 +1,4 @@
-package com.example.dicewirehexagonalapi.util.dto;
+package com.example.dicewarehexagonalapi.util.dto;
 
 public class DicewareWithSynonymsDTO {
 

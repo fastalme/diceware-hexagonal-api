@@ -1,4 +1,4 @@
-package com.example.dicewirehexagonalapi.externalapis;
+package com.example.dicewarehexagonalapi.externalapis;
 
 import java.util.List;
 

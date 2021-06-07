@@ -1,4 +1,4 @@
-package com.example.dicewirehexagonalapi.externalapis;
+package com.example.dicewarehexagonalapi.externalapis;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
