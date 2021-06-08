@@ -19,13 +19,13 @@ public class DicewareController {
     }
 
     @GetMapping ("/diceware-phrase")
-    public DicewareDTO getDicewarePhrase (@RequestParam (name = "dice-rolls") int diceRolls) {
-        return new DicewareDTO (dicewareService.getDicewarePhrase (diceRolls));
+    public DicewareDTO getDicewarePhrase (@RequestParam (name = "word-count") int wordCount) {
+        return new DicewareDTO (dicewareService.getDicewarePhrase (wordCount));
     }
 
     @GetMapping ("/diceware-phrase-synonyms")
-    public DicewareWithSynonymsDTO getDicewarePhraseWithSynonyms (@RequestParam (name = "dice-rolls") int diceRolls) {
-        List<String> phrases = dicewareService.getDicewarePhraseWithSynonyms (diceRolls);
+    public DicewareWithSynonymsDTO getDicewarePhraseWithSynonyms (@RequestParam (name = "word-count") int wordCount) {
+        List<String> phrases = dicewareService.getDicewarePhraseWithSynonyms (wordCount);
         return new DicewareWithSynonymsDTO (phrases.get (0), phrases.get (1));
     }
 

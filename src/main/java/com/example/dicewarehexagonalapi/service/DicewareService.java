@@ -18,10 +18,8 @@ import java.util.concurrent.ThreadLocalRandom;
 public class DicewareService {
 
     public static final String DEFAULT_WORD = "none";
-    public static final int MIN_WORD_INDEX = 1;
-    public static final int MAX_WORD_INDEX = 6;
-    public static final int MIN_DICE_ROLLS = 2;
-    public static final int MAX_DICE_ROLLS = 8;
+    public static final int MIN_WORD_COUNT = 2;
+    public static final int MAX_WORD_COUNT = 8;
     private static final Logger LOG = LoggerFactory.getLogger (DicewareService.class);
     private final DiceWordRepository diceWordRepository;
     private final WordsAPIClient wordsAPIClient;
@@ -32,30 +30,30 @@ public class DicewareService {
         this.wordsAPIClient = wordsAPIClient;
     }
 
-    public String getDicewarePhrase (int diceRolls) {
+    public String getDicewarePhrase (int wordCount) {
 
-        if (diceRolls < MIN_DICE_ROLLS || diceRolls > MAX_DICE_ROLLS) {
+        if (wordCount < MIN_WORD_COUNT || wordCount > MAX_WORD_COUNT) {
             throw new DicerollsInvalidValue ();
         }
 
         var phrase = new StringBuilder ();
-        for (var i = 0; i < diceRolls; i++) {
+        for (var i = 0; i < wordCount; i++) {
             phrase.append (findRandomWord ()).append (" ");
         }
 
         return phrase.toString ().trim ();
     }
 
-    public List<String> getDicewarePhraseWithSynonyms (int diceRolls) {
+    public List<String> getDicewarePhraseWithSynonyms (int wordCount) {
 
-        if (diceRolls < MIN_DICE_ROLLS || diceRolls > MAX_DICE_ROLLS) {
+        if (wordCount < MIN_WORD_COUNT || wordCount > MAX_WORD_COUNT) {
             throw new DicerollsInvalidValue ();
         }
 
         var phrase = new StringBuilder ();
         var synonymsPhrase = new StringBuilder ();
         String randomWord;
-        for (var i = 0; i < diceRolls; i++) {
+        for (var i = 0; i < wordCount; i++) {
             randomWord = findRandomWord ();
             phrase.append (randomWord).append (" ");
             synonymsPhrase.append (findRandomSynonym (randomWord)).append (" ");
@@ -87,13 +85,17 @@ public class DicewareService {
     private String calculateId () {
 
         int id =
-                ThreadLocalRandom.current ().nextInt (MIN_WORD_INDEX, MAX_WORD_INDEX + 1) +
-                        ThreadLocalRandom.current ().nextInt (MIN_WORD_INDEX, MAX_WORD_INDEX + 1) * 10 +
-                        ThreadLocalRandom.current ().nextInt (MIN_WORD_INDEX, MAX_WORD_INDEX + 1) * 100 +
-                        ThreadLocalRandom.current ().nextInt (MIN_WORD_INDEX, MAX_WORD_INDEX + 1) * 1000 +
-                        ThreadLocalRandom.current ().nextInt (MIN_WORD_INDEX, MAX_WORD_INDEX + 1) * 10000;
+                diceRoll () +
+                        diceRoll () * 10 +
+                        diceRoll () * 100 +
+                        diceRoll () * 1000 +
+                        diceRoll () * 10000;
 
         return String.valueOf (id);
+    }
+
+    private int diceRoll () {
+        return ThreadLocalRandom.current ().nextInt (1, 7);
     }
 
 }
