@@ -1,8 +1,9 @@
 package com.example.dicewarehexagonalapi;
 
+import com.example.dicewarehexagonalapi.app.repository.DiceWordRepository;
 import com.example.dicewarehexagonalapi.externalapis.WordsAPIClient;
-import com.example.dicewarehexagonalapi.repository.DiceWordRepository;
-import com.example.dicewarehexagonalapi.service.DicewareService;
+import com.example.dicewarehexagonalapi.infra.diceword.DiceWordCrudRepository;
+import com.example.dicewarehexagonalapi.app.service.DicewareService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

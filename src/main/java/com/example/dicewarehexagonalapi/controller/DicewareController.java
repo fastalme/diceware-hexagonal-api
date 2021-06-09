@@ -1,6 +1,6 @@
 package com.example.dicewarehexagonalapi.controller;
 
-import com.example.dicewarehexagonalapi.service.DicewareService;
+import com.example.dicewarehexagonalapi.app.service.DicewareService;
 import com.example.dicewarehexagonalapi.util.dto.DicewareDTO;
 import com.example.dicewarehexagonalapi.util.dto.DicewareWithSynonymsDTO;
 import org.springframework.web.bind.annotation.GetMapping;

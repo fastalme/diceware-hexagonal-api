@@ -1,9 +1,9 @@
-package com.example.dicewarehexagonalapi.service;
+package com.example.dicewarehexagonalapi.app.service;
 
-import com.example.dicewarehexagonalapi.entity.DiceWord;
+import com.example.dicewarehexagonalapi.app.entity.DiceWord;
+import com.example.dicewarehexagonalapi.app.repository.DiceWordRepository;
 import com.example.dicewarehexagonalapi.externalapis.SynonymsResult;
 import com.example.dicewarehexagonalapi.externalapis.WordsAPIClient;
-import com.example.dicewarehexagonalapi.repository.DiceWordRepository;
 import com.example.dicewarehexagonalapi.util.exception.DicerollsInvalidValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

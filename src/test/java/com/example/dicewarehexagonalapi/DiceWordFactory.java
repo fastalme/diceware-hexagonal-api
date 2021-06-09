@@ -1,6 +1,6 @@
 package com.example.dicewarehexagonalapi;
 
-import com.example.dicewarehexagonalapi.entity.DiceWord;
+import com.example.dicewarehexagonalapi.app.entity.DiceWord;
 
 import java.util.Optional;
 

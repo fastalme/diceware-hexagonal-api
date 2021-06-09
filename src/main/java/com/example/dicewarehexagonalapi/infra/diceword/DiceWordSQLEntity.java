@@ -1,4 +1,6 @@
-package com.example.dicewarehexagonalapi.entity;
+package com.example.dicewarehexagonalapi.infra.diceword;
+
+import com.example.dicewarehexagonalapi.app.entity.DiceWord;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -6,16 +8,16 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name = "dice_word")
-public class DiceWord {
+public class DiceWordSQLEntity {
 
     @Id
     private String id;
     private String word;
 
-    public DiceWord () {
+    public DiceWordSQLEntity () {
     }
 
-    public DiceWord (String id, String word) {
+    public DiceWordSQLEntity (String id, String word) {
         this.id = id;
         this.word = word;
     }
@@ -35,4 +37,9 @@ public class DiceWord {
     public void setWord (String word) {
         this.word = word;
     }
+
+    public DiceWord toDiceWord() {
+        return new DiceWord (this.id, this.word);
+    }
+
 }
