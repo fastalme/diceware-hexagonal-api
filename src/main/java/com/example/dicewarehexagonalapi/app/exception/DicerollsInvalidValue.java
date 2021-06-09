@@ -1,4 +1,4 @@
-package com.example.dicewarehexagonalapi.util.exception;
+package com.example.dicewarehexagonalapi.app.exception;
 
 public class DicerollsInvalidValue extends RuntimeException {
 

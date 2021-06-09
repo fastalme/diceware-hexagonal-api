@@ -1,13 +1,13 @@
-package com.example.dicewarehexagonalapi.externalapis;
+package com.example.dicewarehexagonalapi.app.entity;
 
 import java.util.List;
 
-public class SynonymsResult {
+public class WordSynonyms {
 
     private final String word;
     private final List<String> synonyms;
 
-    public SynonymsResult (String word, List<String> synonyms) {
+    public WordSynonyms (String word, List<String> synonyms) {
         this.word = word;
         this.synonyms = synonyms;
     }

@@ -1,4 +1,4 @@
-package com.example.dicewarehexagonalapi.util.dto;
+package com.example.dicewarehexagonalapi.infra.web;
 
 public class DicewareWithSynonymsDTO {
 

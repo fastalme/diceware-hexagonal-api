@@ -1,36 +1,36 @@
-package com.example.dicewarehexagonalapi.app.service;
+package com.example.dicewarehexagonalapi.app;
 
 import com.example.dicewarehexagonalapi.app.entity.DiceWord;
-import com.example.dicewarehexagonalapi.app.repository.DiceWordRepository;
-import com.example.dicewarehexagonalapi.externalapis.SynonymsResult;
-import com.example.dicewarehexagonalapi.externalapis.WordsAPIClient;
-import com.example.dicewarehexagonalapi.util.exception.DicerollsInvalidValue;
+import com.example.dicewarehexagonalapi.app.entity.WordSynonyms;
+import com.example.dicewarehexagonalapi.app.ports.ForGettingDicewarePhrase;
+import com.example.dicewarehexagonalapi.app.ports.ForGettingDiceWords;
+import com.example.dicewarehexagonalapi.app.ports.ForGettingWordSynonyms;
+import com.example.dicewarehexagonalapi.app.exception.DicerollsInvalidValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
-@Service
-public class DicewareService {
+public class DicewarePhraseGetter implements ForGettingDicewarePhrase {
 
     public static final String DEFAULT_WORD = "none";
     public static final int MIN_WORD_COUNT = 2;
     public static final int MAX_WORD_COUNT = 8;
-    private static final Logger LOG = LoggerFactory.getLogger (DicewareService.class);
-    private final DiceWordRepository diceWordRepository;
-    private final WordsAPIClient wordsAPIClient;
+    private static final Logger LOG = LoggerFactory.getLogger (DicewarePhraseGetter.class);
+    private final ForGettingDiceWords forGettingDiceWords;
+    private final ForGettingWordSynonyms forGettingWordSynonyms;
 
-    public DicewareService (DiceWordRepository diceWordRepository,
-                            WordsAPIClient wordsAPIClient) {
-        this.diceWordRepository = diceWordRepository;
-        this.wordsAPIClient = wordsAPIClient;
+    public DicewarePhraseGetter (ForGettingDiceWords forGettingDiceWords,
+                                 ForGettingWordSynonyms forGettingWordSynonyms) {
+        this.forGettingDiceWords = forGettingDiceWords;
+        this.forGettingWordSynonyms = forGettingWordSynonyms;
     }
 
-    public String getDicewarePhrase (int wordCount) {
+    @Override
+    public String get (int wordCount) {
 
         if (wordCount < MIN_WORD_COUNT || wordCount > MAX_WORD_COUNT) {
             throw new DicerollsInvalidValue ();
@@ -42,10 +42,11 @@ public class DicewareService {
         }
 
         return phrase.toString ().trim ();
+
     }
 
-    public List<String> getDicewarePhraseWithSynonyms (int wordCount) {
-
+    @Override
+    public List<String> getWithSynonyms (int wordCount) {
         if (wordCount < MIN_WORD_COUNT || wordCount > MAX_WORD_COUNT) {
             throw new DicerollsInvalidValue ();
         }
@@ -63,22 +64,22 @@ public class DicewareService {
     }
 
     private String findRandomSynonym (String word) {
-        SynonymsResult synonymsResult;
+        WordSynonyms wordSynonyms;
         try {
-            synonymsResult = wordsAPIClient.getSynonyms (word);
+            wordSynonyms = forGettingWordSynonyms.findSynonymsByWord (word);
         } catch (Exception e) {
             LOG.warn ("WordsAPI exception", e);
             return word;
         }
-        if (synonymsResult.getSynonyms ().isEmpty ()) {
+        if (wordSynonyms.getSynonyms ().isEmpty ()) {
             return word;
         }
-        return synonymsResult.getSynonyms ()
-                .get (ThreadLocalRandom.current ().nextInt (synonymsResult.getSynonyms ().size ()));
+        return wordSynonyms.getSynonyms ()
+                .get (ThreadLocalRandom.current ().nextInt (wordSynonyms.getSynonyms ().size ()));
     }
 
     private String findRandomWord () {
-        Optional<DiceWord> diceWord = this.diceWordRepository.findById (calculateId ());
+        Optional<DiceWord> diceWord = this.forGettingDiceWords.findById (calculateId ());
         return diceWord.isPresent () ? diceWord.get ().getWord () : DEFAULT_WORD;
     }
 

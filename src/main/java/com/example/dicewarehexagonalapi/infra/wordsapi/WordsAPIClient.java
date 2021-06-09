@@ -1,5 +1,6 @@
-package com.example.dicewarehexagonalapi.externalapis;
+package com.example.dicewarehexagonalapi.infra.wordsapi;
 
+import com.example.dicewarehexagonalapi.app.entity.WordSynonyms;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public interface WordsAPIClient {
 
     @RequestMapping (method = RequestMethod.GET, value = "/words/{word}/synonyms")
-    SynonymsResult getSynonyms (@PathVariable String word);
+    WordSynonyms getSynonyms (@PathVariable String word);
 
 }

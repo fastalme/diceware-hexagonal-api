@@ -1,6 +1,7 @@
-package com.example.dicewarehexagonalapi.util.config;
+package com.example.dicewarehexagonalapi.infra.config;
 
-import com.example.dicewarehexagonalapi.util.exception.DicerollsInvalidValue;
+import com.example.dicewarehexagonalapi.app.entity.ErrorData;
+import com.example.dicewarehexagonalapi.app.exception.DicerollsInvalidValue;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -16,26 +17,6 @@ public class RestExceptionHandler {
         return ResponseEntity.badRequest ()
                 .body (new ErrorData (DicerollsInvalidValue.class.getSimpleName (), exception.getMessage ()));
 
-    }
-
-}
-
-class ErrorData {
-
-    private final String errorCode;
-    private final String errorMessage;
-
-    public ErrorData (String errorCode, String errorMessage) {
-        this.errorCode = errorCode;
-        this.errorMessage = errorMessage;
-    }
-
-    public String getErrorCode () {
-        return errorCode;
-    }
-
-    public String getErrorMessage () {
-        return errorMessage;
     }
 
 }
