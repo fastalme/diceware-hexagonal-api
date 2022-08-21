@@ -1,8 +1,9 @@
 package com.example.dicewarehexagonalapi.util.exception;
 
-public class DicerollsInvalidValue extends RuntimeException {
+public class InvalidWordCountValue extends RuntimeException {
 
-    public DicerollsInvalidValue () {
+    public InvalidWordCountValue () {
         super ("Dicerolls value must be between 2 and 8");
     }
+
 }
