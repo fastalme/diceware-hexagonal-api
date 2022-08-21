@@ -4,7 +4,7 @@ import com.example.dicewarehexagonalapi.entity.DiceWord;
 import com.example.dicewarehexagonalapi.externalapis.SynonymsResult;
 import com.example.dicewarehexagonalapi.externalapis.WordsAPIClient;
 import com.example.dicewarehexagonalapi.repository.DiceWordRepository;
-import com.example.dicewarehexagonalapi.util.exception.InvalidWordCountValue;
+import com.example.dicewarehexagonalapi.util.exception.InvalidWordCountException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -33,7 +33,7 @@ public class DicewareService {
     public String getDicewarePhrase (int wordCount) {
 
         if (wordCount < MIN_WORD_COUNT || wordCount > MAX_WORD_COUNT) {
-            throw new InvalidWordCountValue();
+            throw new InvalidWordCountException();
         }
 
         var phrase = new StringBuilder ();
@@ -47,7 +47,7 @@ public class DicewareService {
     public List<String> getDicewarePhraseWithSynonyms (int wordCount) {
 
         if (wordCount < MIN_WORD_COUNT || wordCount > MAX_WORD_COUNT) {
-            throw new InvalidWordCountValue();
+            throw new InvalidWordCountException();
         }
 
         var phrase = new StringBuilder ();
