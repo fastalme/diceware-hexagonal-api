@@ -5,7 +5,7 @@ import com.example.dicewarehexagonalapi.app.entity.WordSynonyms;
 import com.example.dicewarehexagonalapi.app.ports.ForGettingDicewarePhrase;
 import com.example.dicewarehexagonalapi.app.ports.ForGettingDiceWords;
 import com.example.dicewarehexagonalapi.app.ports.ForGettingWordSynonyms;
-import com.example.dicewarehexagonalapi.app.exception.DicerollsInvalidValue;
+import com.example.dicewarehexagonalapi.app.exception.InvalidWordCountException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,7 +33,7 @@ public class DicewarePhraseGetter implements ForGettingDicewarePhrase {
     public String get (int wordCount) {
 
         if (wordCount < MIN_WORD_COUNT || wordCount > MAX_WORD_COUNT) {
-            throw new DicerollsInvalidValue ();
+            throw new InvalidWordCountException();
         }
 
         var phrase = new StringBuilder ();
@@ -48,7 +48,7 @@ public class DicewarePhraseGetter implements ForGettingDicewarePhrase {
     @Override
     public List<String> getWithSynonyms (int wordCount) {
         if (wordCount < MIN_WORD_COUNT || wordCount > MAX_WORD_COUNT) {
-            throw new DicerollsInvalidValue ();
+            throw new InvalidWordCountException();
         }
 
         var phrase = new StringBuilder ();
