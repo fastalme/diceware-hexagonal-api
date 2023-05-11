@@ -1,124 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Diagram>
   <ID>JAVA</ID>
-  <OriginalElement>/Users/fas/devel/code/pocs/diceware-hexagonal-api/src/main/java/com/example/dicewarehexagonalapi</OriginalElement>
+  <OriginalElement />
   <nodes>
-    <node x="203.55946228620644" y="268.0">com.example.dicewarehexagonalapi.repository.DiceWordRepository</node>
-    <node x="361.077104097453" y="0.0">com.example.dicewarehexagonalapi.entity.DiceWord</node>
-    <node x="-154.0" y="815.0">com.example.dicewarehexagonalapi.DicewareHexagonalApiApplication</node>
-    <node x="1182.017857142857" y="400.0">com.example.dicewarehexagonalapi.util.config.ErrorData</node>
-    <node x="-92.0" y="514.0">com.example.dicewarehexagonalapi.util.dto.DicewareWithSynonymsDTO</node>
-    <node x="278.5000000000001" y="821.0">com.example.dicewarehexagonalapi.controller.DicewareController</node>
-    <node x="1000.9060846560847" y="298.0">com.example.dicewarehexagonalapi.util.exception.DicerollsInvalidValue</node>
-    <node x="882.9060846560847" y="583.5">com.example.dicewarehexagonalapi.util.config.RestExceptionHandler</node>
-    <node x="639.059539190353" y="72.1733111849391">com.example.dicewarehexagonalapi.externalapis.WordsAPIClient</node>
-    <node x="210.0000000000001" y="536.0">com.example.dicewarehexagonalapi.util.dto.DicewareDTO</node>
-    <node x="479.0000000000001" y="400.0">com.example.dicewarehexagonalapi.service.DicewareService</node>
-    <node x="966.6012212378489" y="38.673311184939095">com.example.dicewarehexagonalapi.externalapis.SynonymsResult</node>
+    <node x="-683.75" y="112.0">com.example.dicewarehexagonalapi.service.DicewareService</node>
+    <node x="-297.75" y="158.0">com.example.dicewarehexagonalapi.util.dto.DicewareWithSynonymsDTO</node>
+    <node x="-738.0" y="17.0">com.example.dicewarehexagonalapi.repository.DiceWordRepository</node>
+    <node x="-510.0" y="0.0">com.example.dicewarehexagonalapi.externalapis.WordsAPIClient</node>
+    <node x="-564.25" y="339.0">com.example.dicewarehexagonalapi.controller.DicewareController</node>
   </nodes>
   <notes />
   <edges>
-    <edge source="com.example.dicewarehexagonalapi.service.DicewareService" target="com.example.dicewarehexagonalapi.util.exception.DicerollsInvalidValue" relationship="CREATE">
-      <point x="157.71428571428572" y="-160.0" />
-      <point x="820.7142857142858" y="379.0" />
-      <point x="1107.9060846560847" y="379.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="com.example.dicewarehexagonalapi.service.DicewareService" target="com.example.dicewarehexagonalapi.externalapis.WordsAPIClient" relationship="DEPENDENCY">
-      <point x="52.571428571428555" y="-160.0" />
-      <point x="715.5714285714287" y="283.0" />
-      <point x="774.5271471637749" y="283.0" />
-      <point x="774.5271471637749" y="127.1733111849391" />
-      <point x="72.25" y="27.5" />
-    </edge>
-    <edge source="com.example.dicewarehexagonalapi.util.config.RestExceptionHandler" target="com.example.dicewarehexagonalapi.util.config.ErrorData" relationship="CREATE">
-      <point x="135.0" y="-27.5" />
-      <point x="1287.9060846560847" y="379.0" />
-      <point x="1285.517857142857" y="379.0" />
-      <point x="0.0" y="61.0" />
-    </edge>
-    <edge source="com.example.dicewarehexagonalapi.service.DicewareService" target="com.example.dicewarehexagonalapi.entity.DiceWord" relationship="DEPENDENCY">
-      <point x="-52.57142857142861" y="-160.0" />
-      <point x="610.4285714285716" y="379.0" />
-      <point x="590.4060846560847" y="379.0" />
-      <point x="590.4060846560847" y="191.0" />
-      <point x="450.577104097453" y="191.0" />
-      <point x="0.0" y="83.0" />
-    </edge>
-    <edge source="com.example.dicewarehexagonalapi.service.DicewareService" target="com.example.dicewarehexagonalapi.repository.DiceWordRepository" relationship="DEPENDENCY">
-      <point x="-105.14285714285717" y="-160.0" />
-      <point x="557.8571428571429" y="379.0" />
-      <point x="362.55946228620644" y="379.0" />
-      <point x="53.0" y="15.0" />
-    </edge>
-    <edge source="com.example.dicewarehexagonalapi.controller.DicewareController" target="com.example.dicewarehexagonalapi.service.DicewareService" relationship="TO_ONE">
-      <point x="175.5" y="-50.0" />
-      <point x="688.0000000000001" y="750.0" />
-      <point x="755.0000000000001" y="750.0" />
-      <point x="92.0" y="160.0" />
-    </edge>
-    <edge source="com.example.dicewarehexagonalapi.service.DicewareService" target="com.example.dicewarehexagonalapi.repository.DiceWordRepository" relationship="TO_ONE">
-      <point x="-157.71428571428572" y="-160.0" />
-      <point x="505.2857142857144" y="379.0" />
-      <point x="256.55946228620644" y="379.0" />
-      <point x="-53.0" y="15.0" />
-    </edge>
-    <edge source="com.example.dicewarehexagonalapi.controller.DicewareController" target="com.example.dicewarehexagonalapi.service.DicewareService" relationship="DEPENDENCY">
-      <point x="58.5" y="-50.0" />
-      <point x="-92.0" y="160.0" />
-    </edge>
-    <edge source="com.example.dicewarehexagonalapi.repository.DiceWordRepository" target="com.example.dicewarehexagonalapi.entity.DiceWord" relationship="DEPENDENCY">
-      <point x="0.0" y="-15.0" />
-      <point x="309.55946228620644" y="191.0" />
-      <point x="450.577104097453" y="191.0" />
-      <point x="0.0" y="83.0" />
-    </edge>
     <edge source="com.example.dicewarehexagonalapi.controller.DicewareController" target="com.example.dicewarehexagonalapi.util.dto.DicewareWithSynonymsDTO" relationship="CREATE">
-      <point x="-175.5" y="-50.0" />
-      <point x="337.0000000000001" y="750.0" />
-      <point x="45.5" y="750.0" />
-      <point x="0.0" y="61.0" />
-    </edge>
-    <edge source="com.example.dicewarehexagonalapi.externalapis.WordsAPIClient" target="com.example.dicewarehexagonalapi.externalapis.SynonymsResult" relationship="DEPENDENCY">
-      <point x="0.0" y="-27.5" />
-      <point x="783.559539190353" y="101.87998338870432" />
-      <point x="844.1336594069151" y="101.87998338870432" />
-      <point x="844.1336594069151" y="205.5891472868217" />
-      <point x="1078.601221237849" y="205.5891472868217" />
-      <point x="0.0" y="61.0" />
-    </edge>
-    <edge source="com.example.dicewarehexagonalapi.controller.DicewareController" target="com.example.dicewarehexagonalapi.util.dto.DicewareDTO" relationship="CREATE">
-      <point x="-58.5" y="-50.0" />
-      <point x="454.0000000000001" y="740.0" />
-      <point x="292.0000000000001" y="740.0" />
-      <point x="0.0" y="39.0" />
+      <point x="116.75" y="-42.5" />
+      <point x="-214.0" y="314.0" />
+      <point x="-160.75" y="314.0" />
+      <point x="0.0" y="42.5" />
     </edge>
     <edge source="com.example.dicewarehexagonalapi.service.DicewareService" target="com.example.dicewarehexagonalapi.externalapis.WordsAPIClient" relationship="TO_ONE">
-      <point x="-2.8421709430404007E-14" y="-160.0" />
-      <point x="663.0000000000001" y="230.72093023255815" />
-      <point x="711.309539190353" y="230.72093023255815" />
-      <point x="-72.25" y="27.5" />
+      <point x="0.0" y="-88.5" />
+      <point x="-500.75" y="87.0" />
+      <point x="-367.5" y="87.0" />
+      <point x="0.0" y="31.0" />
     </edge>
-    <edge source="com.example.dicewarehexagonalapi.service.DicewareService" target="com.example.dicewarehexagonalapi.externalapis.SynonymsResult" relationship="DEPENDENCY">
-      <point x="105.14285714285711" y="-160.0" />
-      <point x="768.1428571428572" y="322.1063122923588" />
-      <point x="844.1336594069151" y="322.1063122923588" />
-      <point x="844.1336594069151" y="243.10409745293467" />
-      <point x="1107.9060846560847" y="243.10409745293467" />
-      <point x="1107.9060846560847" y="160.6733111849391" />
-      <point x="0.0" y="61.0" />
+    <edge source="com.example.dicewarehexagonalapi.service.DicewareService" target="com.example.dicewarehexagonalapi.repository.DiceWordRepository" relationship="TO_ONE">
+      <point x="0.0" y="-88.5" />
+      <point x="-500.75" y="87.0" />
+      <point x="-634.0" y="87.0" />
+      <point x="0.0" y="14.0" />
     </edge>
-    <edge source="com.example.dicewarehexagonalapi.util.config.RestExceptionHandler" target="com.example.dicewarehexagonalapi.util.exception.DicerollsInvalidValue" relationship="DEPENDENCY">
-      <point x="-135.0" y="-27.5" />
-      <point x="1017.9060846560847" y="437.75" />
-      <point x="1107.9060846560847" y="437.75" />
-      <point x="0.0" y="15.0" />
+    <edge source="com.example.dicewarehexagonalapi.controller.DicewareController" target="com.example.dicewarehexagonalapi.service.DicewareService" relationship="TO_ONE">
+      <point x="-116.75" y="-42.5" />
+      <point x="-447.5" y="314.0" />
+      <point x="-500.75" y="314.0" />
+      <point x="0.0" y="88.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic" zoom="0.9596174282678002" showDependencies="true" x="634.5" y="460.5" />
-  <SelectedNodes />
+  <settings layout="Hierarchic" zoom="1.5" showDependencies="true" x="-370.5" y="222.0" />
+  <SelectedNodes>
+    <node>com.example.dicewarehexagonalapi.util.dto.DicewareWithSynonymsDTO</node>
+  </SelectedNodes>
   <Categories>
-    <Category>Fields</Category>
     <Category>Methods</Category>
   </Categories>
   <SCOPE>All</SCOPE>
