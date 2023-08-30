@@ -1,6 +1,6 @@
 package com.example.dicewarehexagonalapi.infra.wordsapi;
 
-import com.example.dicewarehexagonalapi.app.entity.WordSynonyms;
+import com.example.dicewarehexagonalapi.app.entity.SynonymList;
 import com.example.dicewarehexagonalapi.app.ports.ForGettingWordSynonyms;
 import org.springframework.stereotype.Component;
 
@@ -14,8 +14,8 @@ public class ForGettingAPIWordSynonyms implements ForGettingWordSynonyms {
     }
 
     @Override
-    public WordSynonyms findSynonymsByWord (String word) {
-        return this.wordsAPIClient.getSynonyms (word);
+    public SynonymList findSynonymsByWord (String word) {
+        return new SynonymList(this.wordsAPIClient.getSynonyms(word).getSynonyms());
     }
 
 }

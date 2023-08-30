@@ -1,11 +1,11 @@
 package com.example.dicewarehexagonalapi.app;
 
 import com.example.dicewarehexagonalapi.app.entity.DiceWord;
-import com.example.dicewarehexagonalapi.app.entity.WordSynonyms;
-import com.example.dicewarehexagonalapi.app.ports.ForGettingDicewarePhrase;
-import com.example.dicewarehexagonalapi.app.ports.ForGettingDiceWords;
-import com.example.dicewarehexagonalapi.app.ports.ForGettingWordSynonyms;
+import com.example.dicewarehexagonalapi.app.entity.SynonymList;
 import com.example.dicewarehexagonalapi.app.exception.InvalidWordCountException;
+import com.example.dicewarehexagonalapi.app.ports.ForGettingDiceWords;
+import com.example.dicewarehexagonalapi.app.ports.ForGettingDicewarePhrase;
+import com.example.dicewarehexagonalapi.app.ports.ForGettingWordSynonyms;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,7 +19,7 @@ public class DicewarePhraseGetter implements ForGettingDicewarePhrase {
     public static final String DEFAULT_WORD = "none";
     public static final int MIN_WORD_COUNT = 2;
     public static final int MAX_WORD_COUNT = 8;
-    private static final Logger LOG = LoggerFactory.getLogger (DicewarePhraseGetter.class);
+    private static final Logger LOG = LoggerFactory.getLogger(DicewarePhraseGetter.class);
     private final ForGettingDiceWords forGettingDiceWords;
     private final ForGettingWordSynonyms forGettingWordSynonyms;
 
@@ -36,12 +36,12 @@ public class DicewarePhraseGetter implements ForGettingDicewarePhrase {
             throw new InvalidWordCountException();
         }
 
-        var phrase = new StringBuilder ();
+        var phrase = new StringBuilder();
         for (var i = 0; i < wordCount; i++) {
-            phrase.append (findRandomWord ()).append (" ");
+            phrase.append(findRandomWord()).append(" ");
         }
 
-        return phrase.toString ().trim ();
+        return phrase.toString().trim();
 
     }
 
@@ -51,52 +51,52 @@ public class DicewarePhraseGetter implements ForGettingDicewarePhrase {
             throw new InvalidWordCountException();
         }
 
-        var phrase = new StringBuilder ();
-        var synonymsPhrase = new StringBuilder ();
+        var phrase = new StringBuilder();
+        var synonymsPhrase = new StringBuilder();
         String randomWord;
         for (var i = 0; i < wordCount; i++) {
-            randomWord = findRandomWord ();
-            phrase.append (randomWord).append (" ");
-            synonymsPhrase.append (findRandomSynonym (randomWord)).append (" ");
+            randomWord = findRandomWord();
+            phrase.append(randomWord).append(" ");
+            synonymsPhrase.append(findRandomSynonym(randomWord)).append(" ");
         }
 
-        return Arrays.asList (phrase.toString ().trim (), synonymsPhrase.toString ().trim ());
+        return Arrays.asList(phrase.toString().trim(), synonymsPhrase.toString().trim());
     }
 
     private String findRandomSynonym (String word) {
-        WordSynonyms wordSynonyms;
+        SynonymList synonymList;
         try {
-            wordSynonyms = forGettingWordSynonyms.findSynonymsByWord (word);
+            synonymList = forGettingWordSynonyms.findSynonymsByWord(word);
         } catch (Exception e) {
-            LOG.warn ("WordsAPI exception", e);
+            LOG.warn("WordsAPI exception", e);
             return word;
         }
-        if (wordSynonyms.getSynonyms ().isEmpty ()) {
+        if (synonymList.getSynonyms().isEmpty()) {
             return word;
         }
-        return wordSynonyms.getSynonyms ()
-                .get (ThreadLocalRandom.current ().nextInt (wordSynonyms.getSynonyms ().size ()));
+        return synonymList.getSynonyms()
+                .get(ThreadLocalRandom.current().nextInt(synonymList.getSynonyms().size()));
     }
 
     private String findRandomWord () {
-        Optional<DiceWord> diceWord = this.forGettingDiceWords.findById (calculateId ());
-        return diceWord.isPresent () ? diceWord.get ().getWord () : DEFAULT_WORD;
+        Optional<DiceWord> diceWord = this.forGettingDiceWords.findById(calculateId());
+        return diceWord.isPresent() ? diceWord.get().getWord() : DEFAULT_WORD;
     }
 
     private String calculateId () {
 
         int id =
-                diceRoll () +
-                        diceRoll () * 10 +
-                        diceRoll () * 100 +
-                        diceRoll () * 1000 +
-                        diceRoll () * 10000;
+                diceRoll() +
+                        diceRoll() * 10 +
+                        diceRoll() * 100 +
+                        diceRoll() * 1000 +
+                        diceRoll() * 10000;
 
-        return String.valueOf (id);
+        return String.valueOf(id);
     }
 
     private int diceRoll () {
-        return ThreadLocalRandom.current ().nextInt (1, 7);
+        return ThreadLocalRandom.current().nextInt(1, 7);
     }
 
 }

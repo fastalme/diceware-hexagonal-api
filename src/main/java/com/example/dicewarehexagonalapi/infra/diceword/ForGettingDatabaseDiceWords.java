@@ -17,6 +17,6 @@ public class ForGettingDatabaseDiceWords implements ForGettingDiceWords {
 
     @Override
     public Optional<DiceWord> findById (String id) {
-        return this.diceWordCrudRepository.findById (id).map (DiceWordSQLEntity::toDiceWord);
+        return this.diceWordCrudRepository.findById(id).map(DiceWordSQLEntity::toDiceWord);
     }
 }

@@ -16,15 +16,15 @@ public class DicewareController {
         this.forGettingDicewarePhrase = forGettingDicewarePhrase;
     }
 
-    @GetMapping ("/diceware-phrase")
-    public DicewareDTO getDicewarePhrase (@RequestParam (name = "word-count") int wordCount) {
-        return new DicewareDTO (forGettingDicewarePhrase.get (wordCount));
+    @GetMapping("/diceware-phrase")
+    public DicewareDTO getDicewarePhrase (@RequestParam(name = "word-count") int wordCount) {
+        return new DicewareDTO(forGettingDicewarePhrase.get(wordCount));
     }
 
-    @GetMapping ("/diceware-phrase-synonyms")
-    public DicewareWithSynonymsDTO getDicewarePhraseWithSynonyms (@RequestParam (name = "word-count") int wordCount) {
-        List<String> phrases = forGettingDicewarePhrase.getWithSynonyms (wordCount);
-        return new DicewareWithSynonymsDTO (phrases.get (0), phrases.get (1));
+    @GetMapping("/diceware-phrase-synonyms")
+    public DicewareWithSynonymsDTO getDicewarePhraseWithSynonyms (@RequestParam(name = "word-count") int wordCount) {
+        List<String> phrases = forGettingDicewarePhrase.getWithSynonyms(wordCount);
+        return new DicewareWithSynonymsDTO(phrases.get(0), phrases.get(1));
     }
 
 }

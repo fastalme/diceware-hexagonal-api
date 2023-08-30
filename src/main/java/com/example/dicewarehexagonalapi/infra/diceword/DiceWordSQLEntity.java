@@ -7,20 +7,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table (name = "dice_word")
+@Table(name = "dice_word")
 public class DiceWordSQLEntity {
 
     @Id
     private String id;
     private String word;
-
-    public DiceWordSQLEntity () {
-    }
-
-    public DiceWordSQLEntity (String id, String word) {
-        this.id = id;
-        this.word = word;
-    }
 
     public String getId () {
         return id;
@@ -38,8 +30,8 @@ public class DiceWordSQLEntity {
         this.word = word;
     }
 
-    public DiceWord toDiceWord() {
-        return new DiceWord (this.id, this.word);
+    public DiceWord toDiceWord () {
+        return new DiceWord(this.id, this.word);
     }
 
 }
