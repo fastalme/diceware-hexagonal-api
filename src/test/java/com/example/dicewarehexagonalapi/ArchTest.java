@@ -22,9 +22,9 @@ public class ArchTest {
     void noClassesFromAppShouldDependOnClassesFromInfra () {
 
         ArchRule rule = noClasses()
-                .that().resideInAPackage("..app..")
+                .that().resideInAPackage("com.example.dicewarehexagonalapi.app..")
                 .should().dependOnClassesThat()
-                .resideInAPackage("..infra..");
+                .resideInAPackage("com.example.dicewarehexagonalapi.infra..");
 
         rule.check(myClasses);
 
@@ -34,9 +34,9 @@ public class ArchTest {
     void classesFromAppShouldNotDependOnFrameworks () {
 
         ArchRule rule = classes()
-                .that().resideInAPackage("..app..")
+                .that().resideInAPackage("com.example.dicewarehexagonalapi.app..")
                 .should().onlyDependOnClassesThat()
-                .resideInAnyPackage("..app..", "java..", "org.slf4j..");
+                .resideInAnyPackage("com.example.dicewarehexagonalapi.app..", "java..", "org.slf4j..");
 
         rule.check(myClasses);
     }
